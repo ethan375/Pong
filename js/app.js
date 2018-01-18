@@ -3,10 +3,10 @@ console.log("Js file linked and working");
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-let x = 100;
-let dx = 5;
-let y = 100;
-let dy = 5;
+let x = Math.random() * 890;
+let dx = (Math.random() - 0.5) * 10;
+let y = Math.random() * innerHeight;
+let dy = (Math.random() - 0.5) * 10;
 let r = 10;
 let paddle1Y = 100;
 let paddle2Y = 100
@@ -39,9 +39,9 @@ let paddle2 = ()=>{
 let moveBall = ()=>{
   x += dx;
   y += dy;
-  if(x > 890 || x + r < 0){
+  if(x > 890 || x - r < 0){
     dx = -dx;
-  }else if(y + r > 700 || y + r < 0){
+  }else if(y + r > 700 || y - r < 0){
     dy = -dy;
   }
 }
