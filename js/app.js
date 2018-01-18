@@ -7,20 +7,21 @@ let ballX = 100;
 let ballY = 100;
 let ballR = 10;
 
-window.onload = ()=>{
-  setInterval(draw, 500);
-}
 
 
 
-let draw = ()=>{
+
+let animate = ()=>{
+  requestAnimationFrame(animate);
+  ctx.clearRect(0,0,innerWidth, innerHeight);
+
+  ballX += 10;
+
   ctx.beginPath();
   ctx.arc(ballX, ballY, ballR, 0, Math.PI * 2, false);
   ctx.strokeStyle = 'white';
   ctx.stroke();
 
-  ballX += 10;
 
 }
-
-draw();
+animate();
