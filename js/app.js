@@ -38,12 +38,12 @@ let paddle2 = ()=>{
 
 let moveBall = ()=>{
   x += dx;
-  if(x > 890 || x < 0){
+  y += dy;
+  if(x > 890 || x + r < 0){
     dx = -dx;
+  }else if(y + r > 700 || y + r < 0){
+    dy = -dy;
   }
-  // else if(x < 0){
-  //   -dx = dx
-  // }
 }
 
 
