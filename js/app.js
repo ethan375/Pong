@@ -9,12 +9,13 @@ let y = Math.random() * innerHeight;
 let dy = (Math.random() - 0.5) * 10;
 let r = 10;
 let paddle1Y = 100;
-let paddle2Y = 100
+let paddle2Y = 100;
 
 
 
 
-let animate = ()=>{
+const animate = ()=>{
+  //essentially creates a loop and allows to give the illlusion
   requestAnimationFrame(animate);
   ctx.clearRect(0,0,innerWidth, innerHeight);
   moveBall();
@@ -26,29 +27,35 @@ let animate = ()=>{
   ctx.stroke();
 }
 
-let paddle1 = ()=>{
+const paddle1 = ()=>{
   ctx.fillStyle = 'blue';
   ctx.fillRect(0, paddle1Y, 10, 100)
 }
 
-let paddle2 = ()=>{
+const paddle2 = ()=>{
   ctx.fillStyle = 'blue';
   ctx.fillRect(890, paddle2Y, 10, 100)
 }
 
-let moveBall = ()=>{
+const moveBall = ()=>{
   x += dx;
   y += dy;
   if(x > 890 || x - r < 0){
-    dx = -dx;
+    // dx = -dx;
+    resetBall();
   }else if(y + r > 700 || y - r < 0){
     dy = -dy;
   }
 }
 
+const resetBall = ()=>{
+  x = canvas.width/2
+  y = canvas.height/2
+}
+
 
 document.addEventListener('keydown', (event)=>{
-  let key = event.which;
+  const key = event.which;
   if(key == 38){
     paddle2Y -= 20;
   }else if(key == 40){
@@ -61,6 +68,7 @@ document.addEventListener('keydown', (event)=>{
   // console.log(key)
 });
 
+//calling our animate function
 animate();
 
 
