@@ -10,6 +10,7 @@ let dy = (Math.random() - 0.5) * 10;
 let r = 10;
 let paddle1Y = 100;
 let paddle2Y = 100;
+let paddleH = 100;
 
 
 
@@ -40,9 +41,14 @@ const paddle2 = ()=>{
 const moveBall = ()=>{
   x += dx;
   y += dy;
-  if(x > 890 || x - r < 0){
-    // dx = -dx;
+  if(x - r < 0){
+    if(y > paddle1Y && y < paddle1Y + paddleH){
+      dx = -dx
+    }else{ 
     resetBall();
+    }
+  }else if(x > 890){
+    dx = -dx
   }else if(y + r > 700 || y - r < 0){
     dy = -dy;
   }
