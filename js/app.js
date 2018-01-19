@@ -48,7 +48,11 @@ const moveBall = ()=>{
     resetBall();
     }
   }else if(x > 890){
-    dx = -dx
+    if(y > paddle2Y && y < paddle2Y + paddleH){
+      dx = -dx
+    }else{
+      resetBall();
+    }
   }else if(y + r > 700 || y - r < 0){
     dy = -dy;
   }
